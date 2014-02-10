@@ -1,6 +1,6 @@
 package com.qthstudios.game.flappybirdbattle.model;
 
-import com.qthstudios.game.flappybirdbattle.Config.Assets;
+import com.qthstudios.game.flappybirdbattle.config.Assets;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Animation;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;

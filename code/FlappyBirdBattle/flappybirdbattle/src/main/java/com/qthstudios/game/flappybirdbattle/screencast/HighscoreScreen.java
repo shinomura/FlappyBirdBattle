@@ -1,18 +1,14 @@
 package com.qthstudios.game.flappybirdbattle.screencast;
 
-import com.qthstudios.game.flappybirdbattle.Config.Assets;
-import com.qthstudios.game.flappybirdbattle.Config.Settings;
+import com.qthstudios.game.flappybirdbattle.config.Assets;
+import com.qthstudios.game.flappybirdbattle.config.Settings;
 import com.qthstudios.game.flappybirdbattle.framework.Game;
-import com.qthstudios.game.flappybirdbattle.framework.Input;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
-import com.qthstudios.game.flappybirdbattle.framework.gl.FPSCounter;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
 import com.qthstudios.game.flappybirdbattle.framework.math.OverlapTester;
 import com.qthstudios.game.flappybirdbattle.framework.math.Rectangle;
 import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
-import com.qthstudios.game.flappybirdbattle.model.World;
-import com.qthstudios.game.flappybirdbattle.model.WorldRenderer;
 
 import javax.microedition.khronos.opengles.GL10;
 import java.util.List;

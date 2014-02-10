@@ -1,18 +1,15 @@
 package com.qthstudios.game.flappybirdbattle.screencast;
 
-import com.qthstudios.game.flappybirdbattle.Config.Assets;
-import com.qthstudios.game.flappybirdbattle.Config.Settings;
+import com.qthstudios.game.flappybirdbattle.config.Assets;
+import com.qthstudios.game.flappybirdbattle.config.FapAssets;
+import com.qthstudios.game.flappybirdbattle.config.Settings;
 import com.qthstudios.game.flappybirdbattle.framework.Game;
-import com.qthstudios.game.flappybirdbattle.framework.Input;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
-import com.qthstudios.game.flappybirdbattle.framework.gl.FPSCounter;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
 import com.qthstudios.game.flappybirdbattle.framework.math.OverlapTester;
 import com.qthstudios.game.flappybirdbattle.framework.math.Rectangle;
 import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
-import com.qthstudios.game.flappybirdbattle.model.World;
-import com.qthstudios.game.flappybirdbattle.model.WorldRenderer;
 
 import javax.microedition.khronos.opengles.GL10;
 import java.util.List;
@@ -79,7 +76,8 @@ public class MainMenu extends GLScreen {
         guiCam.setViewportAndMatrices();
         
         gl.glEnable(GL10.GL_TEXTURE_2D);
-        
+
+
         batcher.beginBatch(Assets.background);
         batcher.drawSprite(160, 240, 320, 480, Assets.backgroundRegion);
         batcher.endBatch();
@@ -87,11 +85,11 @@ public class MainMenu extends GLScreen {
         gl.glEnable(GL10.GL_BLEND);
         gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);               
         
-        batcher.beginBatch(Assets.items);                 
+        batcher.beginBatch(Assets.items);
         
         batcher.drawSprite(160, 480 - 10 - 71, 274, 142, Assets.logo);
         batcher.drawSprite(160, 200, 300, 110, Assets.mainMenu);
-        batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled?Assets.soundOn:Assets.soundOff);
+        batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled? Assets.soundOn: Assets.soundOff);
                 
         batcher.endBatch();
         

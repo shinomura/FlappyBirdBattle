@@ -1,16 +1,13 @@
 package com.qthstudios.game.flappybirdbattle.screencast;
 
-import com.qthstudios.game.flappybirdbattle.Config.Assets;
-import com.qthstudios.game.flappybirdbattle.Config.Settings;
+import com.qthstudios.game.flappybirdbattle.config.Assets;
+import com.qthstudios.game.flappybirdbattle.config.Assets;
 import com.qthstudios.game.flappybirdbattle.framework.Game;
-import com.qthstudios.game.flappybirdbattle.framework.Input;
 import com.qthstudios.game.flappybirdbattle.framework.gl.*;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
 import com.qthstudios.game.flappybirdbattle.framework.math.OverlapTester;
 import com.qthstudios.game.flappybirdbattle.framework.math.Rectangle;
 import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
-import com.qthstudios.game.flappybirdbattle.model.World;
-import com.qthstudios.game.flappybirdbattle.model.WorldRenderer;
 
 import javax.microedition.khronos.opengles.GL10;
 import java.util.List;
@@ -80,7 +77,7 @@ public class HelpScreen4 extends GLScreen {
         gl.glEnable(GL10.GL_BLEND);
         gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         
-        batcher.beginBatch(Assets.items);          
+        batcher.beginBatch(Assets.items);
         batcher.drawSprite(320 - 32, 32, -64, 64, Assets.arrow);
         batcher.endBatch();
         

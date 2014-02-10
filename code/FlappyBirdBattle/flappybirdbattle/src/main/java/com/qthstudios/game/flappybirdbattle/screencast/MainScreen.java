@@ -1,7 +1,7 @@
 package com.qthstudios.game.flappybirdbattle.screencast;
 
-import com.qthstudios.game.flappybirdbattle.Config.Assets;
-import com.qthstudios.game.flappybirdbattle.Config.Settings;
+import com.qthstudios.game.flappybirdbattle.config.Assets;
+import com.qthstudios.game.flappybirdbattle.config.Settings;
 import com.qthstudios.game.flappybirdbattle.framework.Game;
 import com.qthstudios.game.flappybirdbattle.framework.Input;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
@@ -100,7 +100,7 @@ public class MainScreen extends GLScreen {
 
         batcher.drawSprite(160, 480 - 10 - 71, 274, 142, Assets.logo);
         batcher.drawSprite(160, 200, 300, 110, Assets.mainMenu);
-        batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled?Assets.soundOn:Assets.soundOff);
+        batcher.drawSprite(32, 32, 64, 64, Settings.soundEnabled? Assets.soundOn: Assets.soundOff);
 
         batcher.endBatch();
 

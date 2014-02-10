@@ -1,7 +1,7 @@
 package com.qthstudios.game.flappybirdbattle.screencast;
 
-import com.qthstudios.game.flappybirdbattle.Config.Assets;
-import com.qthstudios.game.flappybirdbattle.Config.Settings;
+import com.qthstudios.game.flappybirdbattle.config.Assets;
+import com.qthstudios.game.flappybirdbattle.config.Settings;
 import com.qthstudios.game.flappybirdbattle.framework.Game;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.FPSCounter;
@@ -253,7 +253,7 @@ public class GameScreen extends GLScreen {
 	}
 	
 	private void presentGameOver() {
-	    batcher.drawSprite(160, 240, 160, 96, Assets.gameOver);        
+	    batcher.drawSprite(160, 240, 160, 96, Assets.gameOver);
 	    float scoreWidth = Assets.font.glyphWidth * scoreString.length();
 	    Assets.font.drawText(batcher, scoreString, 160 - scoreWidth / 2, 480-20);
 	}

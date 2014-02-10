@@ -1,159 +1,112 @@
 package com.qthstudios.game.flappybirdbattle.config;
 
-import com.qthstudios.game.flappybirdbattle.R;
+import com.qthstudios.game.flappybirdbattle.framework.Music;
 import com.qthstudios.game.flappybirdbattle.framework.Sound;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Animation;
+import com.qthstudios.game.flappybirdbattle.framework.gl.Font;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Texture;
 import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLGame;
-import com.qthstudios.game.flappybirdbattle.utils.ResourceUtils;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
- * How to use:
- * batcher.drawSprite(160, 200, 300, 110,  Assets.textureRegions.get(Assets.TextureAsset.button_menu));
+ * Created by ThaoHQSE60963 on 2/10/14.
  */
 public class Assets {
-    public static Texture atlas;
+    public static Texture background;
+    public static TextureRegion backgroundRegion;
 
-    public static Map<String, TextureRegion> textureRegions;
-    public static Map<String, Animation> animations;
+    public static Texture items;
+    public static TextureRegion mainMenu;
+    public static TextureRegion pauseMenu;
+    public static TextureRegion ready;
+    public static TextureRegion gameOver;
+    public static TextureRegion highScoresRegion;
+    public static TextureRegion logo;
+    public static TextureRegion soundOn;
+    public static TextureRegion soundOff;
+    public static TextureRegion arrow;
+    public static TextureRegion pause;
+    public static TextureRegion spring;
+    public static TextureRegion castle;
+    public static Animation coinAnim;
+    public static Animation bobJump;
+    public static Animation bobFall;
+    public static TextureRegion bobHit;
+    public static Animation squirrelFly;
+    public static TextureRegion platform;
+    public static Animation brakingPlatform;
+    public static Font font;
 
-    public static Sound sfxDie;
-    public static Sound sfxHit;
-    public static Sound sfxPoint;
-    public static Sound sfxSwooshing;
-    public static Sound sfxWing;
+    public static Music music;
+    public static Sound jumpSound;
+    public static Sound highJumpSound;
+    public static Sound hitSound;
+    public static Sound coinSound;
+    public static Sound clickSound;
 
     public static void load(GLGame game) {
-        atlas = new Texture(game, "gfx/atlas.png");
+        background = new Texture(game, "background.png");
+        backgroundRegion = new TextureRegion(background, 0, 0, 320, 480);
 
-        // Load textures
-        String texture = ResourceUtils.readRawTextFile(game.getApplicationContext(), R.raw.atlas);
-        String[] texLines = texture.split("\n");
-        textureRegions = new HashMap<String, TextureRegion>();
-        for (String line : texLines) {
-            String[] parts = line.split(" ");
-            textureRegions.put(parts[0],
-                    new TextureRegion(atlas,
-                            Float.parseFloat(parts[3]) * 1024,
-                            Float.parseFloat(parts[4]) * 1024,
-                            Float.parseFloat(parts[1]),
-                            Float.parseFloat(parts[2])));
-        }
+        items = new Texture(game, "items.png");
+        mainMenu = new TextureRegion(items, 0, 224, 300, 110);
+        pauseMenu = new TextureRegion(items, 224, 128, 192, 96);
+        ready = new TextureRegion(items, 320, 224, 192, 32);
+        gameOver = new TextureRegion(items, 352, 256, 160, 96);
+        highScoresRegion = new TextureRegion(Assets.items, 0, 257, 300, 110 / 3);
+        logo = new TextureRegion(items, 0, 352, 274, 142);
+        soundOff = new TextureRegion(items, 0, 0, 64, 64);
+        soundOn = new TextureRegion(items, 64, 0, 64, 64);
+        arrow = new TextureRegion(items, 0, 64, 64, 64);
+        pause = new TextureRegion(items, 64, 64, 64, 64);
 
-        // Load animates
-        String animates = ResourceUtils.readRawTextFile(game.getApplicationContext(), R.raw.atlas_animate);
-        String[] aniLines = animates.split("\n");
-        animations = new HashMap<String, Animation>();
-        for (int i = 0; i < aniLines.length / 3; ++i) {
-            animations.put(aniLines[i].split(" ")[0],
-                    new Animation(0.2f,
-                            new TextureRegion(atlas,
-                                    Float.parseFloat(aniLines[i].split(" ")[3]) * 1024,
-                                    Float.parseFloat(aniLines[i].split(" ")[4]) * 1024,
-                                    Float.parseFloat(aniLines[i].split(" ")[1]),
-                                    Float.parseFloat(aniLines[i].split(" ")[2])),
-                            new TextureRegion(atlas,
-                                    Float.parseFloat(aniLines[i + 1].split(" ")[3]) * 1024,
-                                    Float.parseFloat(aniLines[i + 1].split(" ")[4]) * 1024,
-                                    Float.parseFloat(aniLines[i + 1].split(" ")[1]),
-                                    Float.parseFloat(aniLines[i + 1].split(" ")[2])),
-                            new TextureRegion(atlas,
-                                    Float.parseFloat(aniLines[i + 2].split(" ")[3]) * 1024,
-                                    Float.parseFloat(aniLines[i + 2].split(" ")[4]) * 1024,
-                                    Float.parseFloat(aniLines[i + 2].split(" ")[1]),
-                                    Float.parseFloat(aniLines[i + 2].split(" ")[2]))
-                    )
-            );
-        }
+        spring = new TextureRegion(items, 128, 0, 32, 32);
+        castle = new TextureRegion(items, 128, 64, 64, 64);
+        coinAnim = new Animation(0.2f,
+                new TextureRegion(items, 128, 32, 32, 32),
+                new TextureRegion(items, 160, 32, 32, 32),
+                new TextureRegion(items, 192, 32, 32, 32),
+                new TextureRegion(items, 160, 32, 32, 32));
+        bobJump = new Animation(0.2f,
+                new TextureRegion(items, 0, 128, 32, 32),
+                new TextureRegion(items, 32, 128, 32, 32));
+        bobFall = new Animation(0.2f,
+                new TextureRegion(items, 64, 128, 32, 32),
+                new TextureRegion(items, 96, 128, 32, 32));
+        bobHit = new TextureRegion(items, 128, 128, 32, 32);
+        squirrelFly = new Animation(0.2f,
+                new TextureRegion(items, 0, 160, 32, 32),
+                new TextureRegion(items, 32, 160, 32, 32));
+        platform = new TextureRegion(items, 64, 160, 64, 16);
+        brakingPlatform = new Animation(0.2f,
+                new TextureRegion(items, 64, 160, 64, 16),
+                new TextureRegion(items, 64, 176, 64, 16),
+                new TextureRegion(items, 64, 192, 64, 16),
+                new TextureRegion(items, 64, 208, 64, 16));
 
+        font = new Font(items, 224, 0, 16, 16, 20);
 
-        // Load sounds
-        sfxDie = game.getAudio().newSound("sounds/sfx_die.ogg");
-        sfxHit = game.getAudio().newSound("sounds/sfx_hit.ogg");
-        sfxPoint = game.getAudio().newSound("sounds/sfx_point.ogg");
-        sfxSwooshing = game.getAudio().newSound("sounds/sfx_swooshing.ogg");
-        sfxWing = game.getAudio().newSound("sounds/sfx_wing.ogg");
+        music = game.getAudio().newMusic("music.mp3");
+        music.setLooping(true);
+        music.setVolume(0.5f);
+        if(Settings.soundEnabled)
+            music.play();
+        jumpSound = game.getAudio().newSound("jump.ogg");
+        highJumpSound = game.getAudio().newSound("highjump.ogg");
+        hitSound = game.getAudio().newSound("hit.ogg");
+        coinSound = game.getAudio().newSound("coin.ogg");
+        clickSound = game.getAudio().newSound("click.ogg");
     }
 
     public static void reload() {
-        atlas.reload();
+        background.reload();
+        items.reload();
+        if(Settings.soundEnabled)
+            music.play();
     }
 
     public static void playSound(Sound sound) {
-        if (Settings.soundEnabled)
+        if(Settings.soundEnabled)
             sound.play(1);
-    }
-
-    public static class AnimateAsset {
-        public static final String bird0_0 = "bird0_0";
-        public static final String bird1_0 = "bird1_0";
-        public static final String bird2_0 = "bird2_0";
-        public static final String blink_0 = "blink_0";
-    }
-
-    public static class TextureAsset {
-        public static final String bg_day = "bg_day";
-        public static final String bg_night = "bg_night";
-        public static final String brand_copyright = "brand_copyright";
-        public static final String black = "black";
-        public static final String button_menu = "button_menu";
-        public static final String button_ok = "button_ok";
-        public static final String button_pause = "button_pause";
-        public static final String button_play = "button_play";
-        public static final String button_rate = "button_rate";
-        public static final String button_resume = "button_resume";
-        public static final String button_score = "button_score";
-        public static final String button_share = "button_share";
-        public static final String font_048 = "font_048";
-        public static final String font_049 = "font_049";
-        public static final String font_050 = "font_050";
-        public static final String font_051 = "font_051";
-        public static final String font_052 = "font_052";
-        public static final String font_053 = "font_053";
-        public static final String font_054 = "font_054";
-        public static final String font_055 = "font_055";
-        public static final String font_056 = "font_056";
-        public static final String font_057 = "font_057";
-        public static final String land = "land";
-        public static final String medals_0 = "medals_0";
-        public static final String medals_1 = "medals_1";
-        public static final String medals_2 = "medals_2";
-        public static final String medals_3 = "medals_3";
-        public static final String new_score = "new_score";
-        public static final String number_context_00 = "number_context_00";
-        public static final String number_context_01 = "number_context_01";
-        public static final String number_context_02 = "number_context_02";
-        public static final String number_context_03 = "number_context_03";
-        public static final String number_context_04 = "number_context_04";
-        public static final String number_context_05 = "number_context_05";
-        public static final String number_context_06 = "number_context_06";
-        public static final String number_context_07 = "number_context_07";
-        public static final String number_context_08 = "number_context_08";
-        public static final String number_context_09 = "number_context_09";
-        public static final String number_context_10 = "number_context_10";
-        public static final String number_score_00 = "number_score_00";
-        public static final String number_score_01 = "number_score_01";
-        public static final String number_score_02 = "number_score_02";
-        public static final String number_score_03 = "number_score_03";
-        public static final String number_score_04 = "number_score_04";
-        public static final String number_score_05 = "number_score_05";
-        public static final String number_score_06 = "number_score_06";
-        public static final String number_score_07 = "number_score_07";
-        public static final String number_score_08 = "number_score_08";
-        public static final String number_score_09 = "number_score_09";
-        public static final String pipe2_down = "pipe2_down";
-        public static final String pipe2_up = "pipe2_up";
-        public static final String pipe_down = "pipe_down";
-        public static final String pipe_up = "pipe_up";
-        public static final String score_panel = "score_panel";
-        public static final String text_game_over = "text_game_over";
-        public static final String text_ready = "text_ready";
-        public static final String title = "title";
-        public static final String tutorial = "tutorial";
-        public static final String white = "white";
     }
 }
