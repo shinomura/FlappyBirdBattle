@@ -34,7 +34,10 @@ public class Camera2D {
         gl.glMatrixMode(GL10.GL_MODELVIEW);
         gl.glLoadIdentity();
     }
-    
+
+    /**
+     * convert back runtime coordinate to design coordinate
+     */
     public void touchToWorld(Vector2 touch) {
         touch.x = (touch.x / (float) glGraphics.getWidth()) * frustumWidth * zoom;
         touch.y = (1 - touch.y / (float) glGraphics.getHeight()) * frustumHeight * zoom;

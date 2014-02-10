@@ -4,6 +4,7 @@ import com.qthstudios.game.flappybirdbattle.Config.Assets;
 import com.qthstudios.game.flappybirdbattle.Config.Settings;
 import com.qthstudios.game.flappybirdbattle.framework.Screen;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLGame;
+import com.qthstudios.game.flappybirdbattle.screencast.MainScreen;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;

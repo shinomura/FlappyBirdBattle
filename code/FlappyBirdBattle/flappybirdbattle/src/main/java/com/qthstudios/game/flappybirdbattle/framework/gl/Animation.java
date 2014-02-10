@@ -1,6 +1,9 @@
 package com.qthstudios.game.flappybirdbattle.framework.gl;
 
-
+/**
+ * Animation sprite : it will automatically animate not depend on world
+ * (example : bird's swing when fly ... )
+ */
 public class Animation {
     public static final int ANIMATION_LOOPING = 0;
     public static final int ANIMATION_NONLOOPING = 1;
