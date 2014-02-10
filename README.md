@@ -1,4 +1,4 @@
 FlappyBirdBattle
 ================
 
-Multiplayer versioin for Flappy Bird, yay!
+Multilayer version for Flappy Bird, yay!
