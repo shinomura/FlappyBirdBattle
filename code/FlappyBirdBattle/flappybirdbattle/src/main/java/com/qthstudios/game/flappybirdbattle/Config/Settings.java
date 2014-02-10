@@ -1,4 +1,4 @@
-package com.qthstudios.game.flappybirdbattle.Config;
+package com.qthstudios.game.flappybirdbattle.config;
 
 import com.qthstudios.game.flappybirdbattle.framework.FileIO;
 
