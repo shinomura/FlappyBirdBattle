@@ -1,6 +1,6 @@
 package com.qthstudios.game.flappybirdbattle.model;
 
-import com.qthstudios.game.flappybirdbattle.framework.DynamicGameObject;
+import com.qthstudios.game.flappybirdbattle.framework.signature.DynamicGameObject;
 import com.qthstudios.game.flappybirdbattle.model.custom_model.World;
 
 /**
@@ -12,19 +12,19 @@ public class Bird extends DynamicGameObject {
         super(x, y, width, height);
     }
 
-    public static final int BOB_STATE_JUMP = 0;
+    public static final int BOB_STATE_FLY = 0;
     public static final int BOB_STATE_FALL = 1;
     public static final int BOB_STATE_HIT = 2;
     public static final float BOB_JUMP_VELOCITY = 11;
     public static final float BOB_MOVE_VELOCITY = 20;
-    public static final float BOB_WIDTH = 0.8f;
-    public static final float BOB_HEIGHT = 0.8f;
+    public static final float BIRD_WIDTH = 0.8f;
+    public static final float BIRD_HEIGHT = 0.8f;
 
     int state;
     float stateTime;
 
     public Bird(float x, float y) {
-        super(x, y, BOB_WIDTH, BOB_HEIGHT);
+        super(x, y, BIRD_WIDTH, BIRD_HEIGHT);
         state = BOB_STATE_FALL;
         stateTime = 0;
     }
@@ -35,8 +35,8 @@ public class Bird extends DynamicGameObject {
         bounds.lowerLeft.set(position).sub(bounds.width / 2, bounds.height / 2);
 
         if(velocity.y > 0 && state != BOB_STATE_HIT) {
-            if(state != BOB_STATE_JUMP) {
-                state = BOB_STATE_JUMP;
+            if(state != BOB_STATE_FLY) {
+                state = BOB_STATE_FLY;
                 stateTime = 0;
             }
         }
@@ -56,6 +56,17 @@ public class Bird extends DynamicGameObject {
         stateTime += deltaTime;
     }
 
+    public void hitPipe() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void hitTop() {
+        throw new UnsupportedOperationException();
+    }
+    public void hitBot() {
+        throw new UnsupportedOperationException();
+    }
+
     public void hitSquirrel() {
         velocity.set(0,0);
         state = BOB_STATE_HIT;
@@ -64,13 +75,13 @@ public class Bird extends DynamicGameObject {
 
     public void hitPlatform() {
         velocity.y = BOB_JUMP_VELOCITY;
-        state = BOB_STATE_JUMP;
+        state = BOB_STATE_FLY;
         stateTime = 0;
     }
 
     public void hitSpring() {
         velocity.y = BOB_JUMP_VELOCITY * 1.5f;
-        state = BOB_STATE_JUMP;
+        state = BOB_STATE_FLY;
         stateTime = 0;
     }
 }

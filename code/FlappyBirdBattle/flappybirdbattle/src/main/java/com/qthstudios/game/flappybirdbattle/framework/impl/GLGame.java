@@ -12,7 +12,7 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.view.Window;
 import android.view.WindowManager;
-import com.qthstudios.game.flappybirdbattle.framework.*;
+import com.qthstudios.game.flappybirdbattle.framework.signature.*;
 
 public abstract class GLGame extends Activity implements Game, Renderer {
     enum GLGameState {

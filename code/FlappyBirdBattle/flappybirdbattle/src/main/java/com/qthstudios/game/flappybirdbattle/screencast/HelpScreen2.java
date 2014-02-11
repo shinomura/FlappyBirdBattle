@@ -1,8 +1,7 @@
 package com.qthstudios.game.flappybirdbattle.screencast;
 
 import com.qthstudios.game.flappybirdbattle.config.Assets;
-import com.qthstudios.game.flappybirdbattle.config.FapAssets;
-import com.qthstudios.game.flappybirdbattle.framework.Game;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Game;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Texture;
@@ -15,7 +14,7 @@ import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
 import javax.microedition.khronos.opengles.GL10;
 import java.util.List;
 
-import static com.qthstudios.game.flappybirdbattle.framework.Input.TouchEvent;
+import static com.qthstudios.game.flappybirdbattle.framework.signature.Input.TouchEvent;
 
 public class HelpScreen2 extends GLScreen {
     Camera2D guiCam;

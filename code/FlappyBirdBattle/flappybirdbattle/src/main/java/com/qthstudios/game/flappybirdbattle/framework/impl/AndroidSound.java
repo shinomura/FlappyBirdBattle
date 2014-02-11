@@ -1,7 +1,7 @@
 package com.qthstudios.game.flappybirdbattle.framework.impl;
 
 import android.media.SoundPool;
-import com.qthstudios.game.flappybirdbattle.framework.Sound;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Sound;
 
 public class AndroidSound implements Sound {
     int soundId;

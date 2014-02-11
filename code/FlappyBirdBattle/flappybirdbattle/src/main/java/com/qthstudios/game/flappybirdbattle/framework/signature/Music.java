@@ -1,4 +1,4 @@
-package com.qthstudios.game.flappybirdbattle.framework;
+package com.qthstudios.game.flappybirdbattle.framework.signature;
 
 public interface Music {
     public void play();

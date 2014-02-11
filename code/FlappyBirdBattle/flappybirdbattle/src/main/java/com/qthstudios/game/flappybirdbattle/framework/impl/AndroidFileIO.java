@@ -9,7 +9,7 @@ import java.io.OutputStream;
 
 import android.content.res.AssetManager;
 import android.os.Environment;
-import com.qthstudios.game.flappybirdbattle.framework.FileIO;
+import com.qthstudios.game.flappybirdbattle.framework.signature.FileIO;
 
 
 public class AndroidFileIO implements FileIO {

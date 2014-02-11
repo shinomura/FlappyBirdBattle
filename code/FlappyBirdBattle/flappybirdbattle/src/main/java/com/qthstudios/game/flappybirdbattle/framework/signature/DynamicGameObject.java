@@ -1,4 +1,4 @@
-package com.qthstudios.game.flappybirdbattle.framework;
+package com.qthstudios.game.flappybirdbattle.framework.signature;
 
 
 import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;

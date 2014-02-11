@@ -3,7 +3,7 @@ package com.qthstudios.game.flappybirdbattle.screen;
 import com.qthstudios.game.flappybirdbattle.config.Assets;
 import com.qthstudios.game.flappybirdbattle.config.FapAssets;
 import com.qthstudios.game.flappybirdbattle.config.Settings;
-import com.qthstudios.game.flappybirdbattle.framework.Screen;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Screen;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLGame;
 import com.qthstudios.game.flappybirdbattle.screencast.MainScreen;
 

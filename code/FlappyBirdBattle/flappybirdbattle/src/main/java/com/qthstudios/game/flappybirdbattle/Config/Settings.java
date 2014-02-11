@@ -1,6 +1,6 @@
 package com.qthstudios.game.flappybirdbattle.config;
 
-import com.qthstudios.game.flappybirdbattle.framework.FileIO;
+import com.qthstudios.game.flappybirdbattle.framework.signature.FileIO;
 
 import java.io.*;
 

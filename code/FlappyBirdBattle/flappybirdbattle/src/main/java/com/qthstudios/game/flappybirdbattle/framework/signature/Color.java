@@ -1,4 +1,4 @@
-package com.qthstudios.game.flappybirdbattle.framework;
+package com.qthstudios.game.flappybirdbattle.framework.signature;
 
 public class Color {
     public static int convert (int r, int g, int b, int a) {

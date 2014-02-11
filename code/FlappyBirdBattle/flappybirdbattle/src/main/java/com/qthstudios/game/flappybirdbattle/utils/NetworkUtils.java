@@ -67,7 +67,7 @@ public class NetworkUtils {
         /** after prepare for data. prepare for sending */
         try {
             /**
-             * HttpResponse is an interface just like HttpGet
+             * HttpResponse is an interfaceaaaaaaaa just like HttpGet
              * therefore we can't initialize them
              */
             HttpResponse httpResponse = httpClient.execute(httpGet);
@@ -124,7 +124,7 @@ public class NetworkUtils {
 
             try {
                 /**
-                 * HttpResponse is an interface just like HttpPost
+                 * HttpResponse is an interfaceaaaaaaaa just like HttpPost
                  * therefore we can't initialize them
                  */
                 HttpResponse httpResponse = httpClient.execute(httpPost);
@@ -146,7 +146,7 @@ public class NetworkUtils {
     private static String parseHttpResponse(HttpResponse httpResponse) {
         /**
          * according to the JAVA API, InputStream constructor do nothing.
-         * So we can't initialize InputStream although it is not an interface
+         * So we can't initialize InputStream although it is not an interfaceaaaaaaaa
          */
         InputStream inputStream;
         try {

@@ -12,8 +12,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
-import com.qthstudios.game.flappybirdbattle.framework.Graphics;
-import com.qthstudios.game.flappybirdbattle.framework.Pixmap;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Graphics;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Pixmap;
 
 public class AndroidGraphics implements Graphics {
     AssetManager assets;

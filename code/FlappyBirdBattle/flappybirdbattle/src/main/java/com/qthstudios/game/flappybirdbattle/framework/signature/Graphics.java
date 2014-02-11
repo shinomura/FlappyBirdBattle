@@ -1,6 +1,10 @@
-package com.qthstudios.game.flappybirdbattle.framework;
+package com.qthstudios.game.flappybirdbattle.framework.signature;
 
 public interface Graphics {
+
+    /**
+     * 8-bit image often in 3 type
+     */
     public static enum PixmapFormat {
         ARGB8888, ARGB4444, RGB565
     }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.util.FloatMath;
-import com.qthstudios.game.flappybirdbattle.framework.GameObject;
+import com.qthstudios.game.flappybirdbattle.framework.signature.GameObject;
 
 public class SpatialHashGrid {
     List<GameObject>[] dynamicCells;

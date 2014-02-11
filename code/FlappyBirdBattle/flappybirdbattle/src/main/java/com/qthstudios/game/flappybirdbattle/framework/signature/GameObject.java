@@ -1,10 +1,15 @@
-package com.qthstudios.game.flappybirdbattle.framework;
+package com.qthstudios.game.flappybirdbattle.framework.signature;
 
 import com.qthstudios.game.flappybirdbattle.framework.math.Rectangle;
 import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
 
+/**
+ * Entity to describe object screen
+ */
 public class GameObject {
+    /** current position of object */
     public final Vector2 position;
+    /** boundary for game object. use to recognize user's touch location */
     public final Rectangle bounds;
     
     public GameObject(float x, float y, float width, float height) {

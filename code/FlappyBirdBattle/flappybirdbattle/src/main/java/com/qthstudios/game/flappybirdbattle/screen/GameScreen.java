@@ -2,8 +2,8 @@ package com.qthstudios.game.flappybirdbattle.screen;
 
 import com.qthstudios.game.flappybirdbattle.config.Assets;
 import com.qthstudios.game.flappybirdbattle.config.Settings;
-import com.qthstudios.game.flappybirdbattle.framework.Game;
-import com.qthstudios.game.flappybirdbattle.framework.Input;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Game;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Input;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.FPSCounter;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;

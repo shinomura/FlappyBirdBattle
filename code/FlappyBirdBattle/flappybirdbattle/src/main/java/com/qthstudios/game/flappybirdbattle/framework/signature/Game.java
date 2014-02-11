@@ -1,5 +1,8 @@
-package com.qthstudios.game.flappybirdbattle.framework;
+package com.qthstudios.game.flappybirdbattle.framework.signature;
 
+/**
+ * Interface to interference with system
+ */
 public interface Game {
     public Input getInput();
 

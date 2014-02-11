@@ -5,10 +5,9 @@ import java.util.List;
 
 import android.view.MotionEvent;
 import android.view.View;
-import com.qthstudios.game.flappybirdbattle.framework.Input;
-import com.qthstudios.game.flappybirdbattle.framework.Pool;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Pool;
 
-import static com.qthstudios.game.flappybirdbattle.framework.Input.TouchEvent;
+import static com.qthstudios.game.flappybirdbattle.framework.signature.Input.TouchEvent;
 
 public class SingleTouchHandler implements TouchHandler {
     boolean isTouched;

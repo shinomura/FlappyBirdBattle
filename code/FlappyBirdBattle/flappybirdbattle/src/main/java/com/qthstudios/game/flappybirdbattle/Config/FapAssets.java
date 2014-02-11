@@ -1,7 +1,7 @@
 package com.qthstudios.game.flappybirdbattle.config;
 
 import com.qthstudios.game.flappybirdbattle.R;
-import com.qthstudios.game.flappybirdbattle.framework.Sound;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Sound;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Animation;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Texture;
 import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;

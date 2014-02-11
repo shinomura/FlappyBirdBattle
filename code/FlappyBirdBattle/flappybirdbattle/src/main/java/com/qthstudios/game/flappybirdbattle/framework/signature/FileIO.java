@@ -1,4 +1,4 @@
-package com.qthstudios.game.flappybirdbattle.framework;
+package com.qthstudios.game.flappybirdbattle.framework.signature;
 
 import java.io.IOException;
 import java.io.InputStream;

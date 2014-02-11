@@ -1,10 +1,9 @@
 package com.qthstudios.game.flappybirdbattle.framework.impl;
 
 import android.graphics.Bitmap;
-import com.qthstudios.game.flappybirdbattle.framework.Graphics;
-import com.qthstudios.game.flappybirdbattle.framework.Pixmap;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Pixmap;
 
-import static com.qthstudios.game.flappybirdbattle.framework.Graphics.*;
+import static com.qthstudios.game.flappybirdbattle.framework.signature.Graphics.*;
 
 public class AndroidPixmap implements Pixmap {
     Bitmap bitmap;

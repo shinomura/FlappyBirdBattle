@@ -2,8 +2,8 @@ package com.qthstudios.game.flappybirdbattle.screencast;
 
 import com.qthstudios.game.flappybirdbattle.config.Assets;
 import com.qthstudios.game.flappybirdbattle.config.Settings;
-import com.qthstudios.game.flappybirdbattle.framework.Game;
-import com.qthstudios.game.flappybirdbattle.framework.Input;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Game;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Input;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
@@ -14,7 +14,7 @@ import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
 import javax.microedition.khronos.opengles.GL10;
 import java.util.List;
 
-import static com.qthstudios.game.flappybirdbattle.framework.Input.TouchEvent;
+import static com.qthstudios.game.flappybirdbattle.framework.signature.Input.TouchEvent;
 
 /**
  * Created by ThaoHQSE60963 on 2/10/14.

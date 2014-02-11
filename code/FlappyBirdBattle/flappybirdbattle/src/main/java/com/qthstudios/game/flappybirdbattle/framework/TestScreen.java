@@ -8,6 +8,7 @@ import java.util.List;
 
 import android.graphics.Color;
 import android.util.Log;
+import com.qthstudios.game.flappybirdbattle.framework.signature.*;
 
 class TestScreen extends Screen {
     long startTime = System.nanoTime();

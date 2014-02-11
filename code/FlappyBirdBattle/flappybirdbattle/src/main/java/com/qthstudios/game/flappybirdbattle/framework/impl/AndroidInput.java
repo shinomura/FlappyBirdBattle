@@ -5,7 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.view.View;
-import com.qthstudios.game.flappybirdbattle.framework.Input;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Input;
 
 public class AndroidInput implements Input {
     AccelerometerHandler accelHandler;

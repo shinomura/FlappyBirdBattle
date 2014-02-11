@@ -5,12 +5,20 @@ import java.io.IOException;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import com.qthstudios.game.flappybirdbattle.framework.Music;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Music;
 
 public class AndroidMusic implements Music, OnCompletionListener {
     MediaPlayer mediaPlayer;
     boolean isPrepared = false;
 
+    /**
+     * load music for Android MediaPlayer to play
+     * MediaPlayer.setDataSource() method does not directly take an AssetFileDescriptor.
+     * Instead it wants a FileDescriptor, which we get via the AssetFileDescriptor.getFileDescriptor()
+     * Additionally we have to specify the offset and the length of the audio file.
+     * Why the offset? Assets are all stored in a single file in reality.
+     * For the MediaPlayer to get to the start of the file we have to provide it with the offset of the file within the containing asset file.
+     */
     public AndroidMusic(AssetFileDescriptor assetDescriptor) {
         mediaPlayer = new MediaPlayer();
         try {

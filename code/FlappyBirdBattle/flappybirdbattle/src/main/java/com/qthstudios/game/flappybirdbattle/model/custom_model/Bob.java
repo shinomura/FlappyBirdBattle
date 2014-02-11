@@ -1,6 +1,6 @@
 package com.qthstudios.game.flappybirdbattle.model.custom_model;
 
-import com.qthstudios.game.flappybirdbattle.framework.DynamicGameObject;
+import com.qthstudios.game.flappybirdbattle.framework.signature.DynamicGameObject;
 
 /**
  * Created by ThaoHQSE60963 on 2/10/14.

@@ -1,8 +1,8 @@
 package com.qthstudios.game.flappybirdbattle.framework.impl;
 
 
-import com.qthstudios.game.flappybirdbattle.framework.Game;
-import com.qthstudios.game.flappybirdbattle.framework.Screen;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Game;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Screen;
 
 public abstract class GLScreen extends Screen {
     protected final GLGraphics glGraphics;

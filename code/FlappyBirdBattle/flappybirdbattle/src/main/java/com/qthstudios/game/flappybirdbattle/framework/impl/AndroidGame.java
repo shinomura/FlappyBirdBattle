@@ -7,9 +7,18 @@ import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import com.qthstudios.game.flappybirdbattle.framework.*;
+import com.qthstudios.game.flappybirdbattle.framework.signature.*;
 
 public abstract class AndroidGame extends Activity implements Game {
+
+    /** static class to decide how to render scene */
+    public static class RenderSetting {
+        static boolean isBufferWidth = false;
+        static boolean isBufferHeight = false;
+        static int frameExpandBufferedWidth = 10;
+        static int frameExpandBufferedHeight = 10;
+    }
+
     AndroidFastRenderView renderView;
     Graphics graphics;
     Audio audio;
@@ -25,9 +34,15 @@ public abstract class AndroidGame extends Activity implements Game {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        /** decide ratio of scene */
         boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         int frameBufferWidth = isLandscape ? 480 : 320;
+        /** decide how to expand buffer base on Render Setting */
+        frameBufferWidth =   RenderSetting.isBufferWidth ? frameBufferWidth + RenderSetting.frameExpandBufferedWidth : frameBufferWidth;
         int frameBufferHeight = isLandscape ? 320 : 480;
+        /** decide how to expand buffer base on Render Setting */
+        frameBufferHeight = RenderSetting.isBufferHeight ? frameBufferHeight + RenderSetting.frameExpandBufferedHeight : frameBufferHeight;
+        /** create frame buffer for render image */
         Bitmap frameBuffer = Bitmap.createBitmap(frameBufferWidth,
                 frameBufferHeight, Config.RGB_565);
         
@@ -83,18 +98,21 @@ public abstract class AndroidGame extends Activity implements Game {
         return audio;
     }
 
+    /** this method will often call in Game.Update() method of screen instance */
     @Override
     public void setScreen(Screen screen) {
         if (screen == null)
             throw new IllegalArgumentException("Screen must not be null");
 
+        /** we must stop current screen p.224 */
         this.screen.pause();
         this.screen.dispose();
         screen.resume();
         screen.update(0);
+
         this.screen = screen;
     }
-    
+
     public Screen getCurrentScreen() {
         return screen;
     }   

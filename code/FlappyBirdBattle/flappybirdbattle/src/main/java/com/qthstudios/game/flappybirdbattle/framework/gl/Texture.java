@@ -8,7 +8,7 @@ import javax.microedition.khronos.opengles.GL10;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLUtils;
-import com.qthstudios.game.flappybirdbattle.framework.FileIO;
+import com.qthstudios.game.flappybirdbattle.framework.signature.FileIO;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLGame;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLGraphics;
 

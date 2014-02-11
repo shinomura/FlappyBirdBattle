@@ -2,13 +2,12 @@ package com.qthstudios.game.flappybirdbattle.framework.impl;
 
 import android.view.View;
 import android.view.View.OnKeyListener;
-import com.qthstudios.game.flappybirdbattle.framework.Input;
-import com.qthstudios.game.flappybirdbattle.framework.Pool;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Pool;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.qthstudios.game.flappybirdbattle.framework.Input.KeyEvent;
+import static com.qthstudios.game.flappybirdbattle.framework.signature.Input.KeyEvent;
 
 
 public class KeyboardHandler implements OnKeyListener {
