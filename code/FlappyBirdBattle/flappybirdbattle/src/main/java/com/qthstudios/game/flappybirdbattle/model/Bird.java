@@ -1,11 +1,17 @@
 package com.qthstudios.game.flappybirdbattle.model;
 
 import com.qthstudios.game.flappybirdbattle.framework.DynamicGameObject;
+import com.qthstudios.game.flappybirdbattle.model.custom_model.World;
 
 /**
- * Created by ThaoHQSE60963 on 2/10/14.
+ * Created by ThaoHQSE60963 on 2/11/14.
  */
-public class Bob extends DynamicGameObject {
+public class Bird extends DynamicGameObject {
+
+    public Bird(float x, float y, float width, float height) {
+        super(x, y, width, height);
+    }
+
     public static final int BOB_STATE_JUMP = 0;
     public static final int BOB_STATE_FALL = 1;
     public static final int BOB_STATE_HIT = 2;
@@ -17,7 +23,7 @@ public class Bob extends DynamicGameObject {
     int state;
     float stateTime;
 
-    public Bob(float x, float y) {
+    public Bird(float x, float y) {
         super(x, y, BOB_WIDTH, BOB_HEIGHT);
         state = BOB_STATE_FALL;
         stateTime = 0;

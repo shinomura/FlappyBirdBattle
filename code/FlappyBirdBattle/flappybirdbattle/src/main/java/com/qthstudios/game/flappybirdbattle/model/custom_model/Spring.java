@@ -1,4 +1,4 @@
-package com.qthstudios.game.flappybirdbattle.model;
+package com.qthstudios.game.flappybirdbattle.model.custom_model;
 
 import com.qthstudios.game.flappybirdbattle.framework.GameObject;
 

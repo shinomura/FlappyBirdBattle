@@ -1,21 +1,27 @@
+/*
 package com.qthstudios.game.flappybirdbattle.model;
 
 import com.qthstudios.game.flappybirdbattle.framework.math.OverlapTester;
 import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
+import com.qthstudios.game.flappybirdbattle.model.custom_model.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class World {
+*/
+/**
+ * Created by ThaoHQSE60963 on 2/10/14.
+ * store all objects on main screen to play
+ *//*
+
+public class FlappyWorld {
     public interface WorldListener {
         public void jump();
 
-        public void highJump();
+        public void fall();
 
         public void hit();
-
-        public void coin();
     }
 
     public static final float WORLD_WIDTH = 10;
@@ -25,7 +31,6 @@ public class World {
     public static final int WORLD_STATE_GAME_OVER = 2;
     public static final Vector2 gravity = new Vector2(0, -12);
 
-    public final Bob bob;
     public final List<Platform> platforms;
     public final List<Spring> springs;
     public final List<Squirrel> squirrels;
@@ -223,3 +228,4 @@ public class World {
         }
     }
 }
+*/

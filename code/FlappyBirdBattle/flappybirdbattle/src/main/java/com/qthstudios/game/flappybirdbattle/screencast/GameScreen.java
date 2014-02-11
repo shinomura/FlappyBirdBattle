@@ -10,14 +10,14 @@ import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
 import com.qthstudios.game.flappybirdbattle.framework.math.OverlapTester;
 import com.qthstudios.game.flappybirdbattle.framework.math.Rectangle;
 import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
-import com.qthstudios.game.flappybirdbattle.model.World;
-import com.qthstudios.game.flappybirdbattle.model.WorldRenderer;
+import com.qthstudios.game.flappybirdbattle.model.custom_model.World;
+import com.qthstudios.game.flappybirdbattle.model.custom_model.WorldRenderer;
 
 import javax.microedition.khronos.opengles.GL10;
 import java.util.List;
 
 import static com.qthstudios.game.flappybirdbattle.framework.Input.TouchEvent;
-import static com.qthstudios.game.flappybirdbattle.model.World.WorldListener;
+import static com.qthstudios.game.flappybirdbattle.model.custom_model.World.WorldListener;
 
 public class GameScreen extends GLScreen {
     static final int GAME_READY = 0;    

@@ -5,7 +5,9 @@ import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
 
 import javax.microedition.khronos.opengles.GL10;
 
-
+/**
+ * set camera view for plane. include sketch plane to fix screen.
+ */
 public class Camera2D {
     public final Vector2 position;
     public float zoom;

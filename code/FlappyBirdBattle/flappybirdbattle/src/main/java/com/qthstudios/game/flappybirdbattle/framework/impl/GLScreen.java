@@ -13,5 +13,4 @@ public abstract class GLScreen extends Screen {
         glGame = (GLGame)game;
         glGraphics = ((GLGame)game).getGLGraphics();
     }
-
 }
