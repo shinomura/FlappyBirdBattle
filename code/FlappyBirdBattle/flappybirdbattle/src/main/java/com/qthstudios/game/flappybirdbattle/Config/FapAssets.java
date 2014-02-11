@@ -11,6 +11,8 @@ import com.qthstudios.game.flappybirdbattle.utils.ResourceUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.qthstudios.game.flappybirdbattle.utils.LogUtils.LOGE;
+
 /**
  * How to use:
  * batcher.drawSprite(160, 200, 300, 110,  FapAssets.textureRegions.get(FapAssets.TextureAsset.button_menu));
@@ -48,7 +50,8 @@ public class FapAssets {
         String animates = ResourceUtils.readRawTextFile(game.getApplicationContext(), R.raw.atlas_animate);
         String[] aniLines = animates.split("\n");
         animations = new HashMap<String, Animation>();
-        for (int i = 0; i < aniLines.length / 3; ++i) {
+        for (int i = 0; i < aniLines.length; i = i + 3) {
+            // LOGE("TRUNGDQ", "ani: " + aniLines[i].split(" ")[0]);
             animations.put(aniLines[i].split(" ")[0],
                     new Animation(0.2f,
                             new TextureRegion(atlas,
@@ -65,7 +68,12 @@ public class FapAssets {
                                     Float.parseFloat(aniLines[i + 2].split(" ")[3]) * 1024,
                                     Float.parseFloat(aniLines[i + 2].split(" ")[4]) * 1024,
                                     Float.parseFloat(aniLines[i + 2].split(" ")[1]),
-                                    Float.parseFloat(aniLines[i + 2].split(" ")[2]))
+                                    Float.parseFloat(aniLines[i + 2].split(" ")[2])),
+                            new TextureRegion(atlas,
+                                    Float.parseFloat(aniLines[i + 1].split(" ")[3]) * 1024,
+                                    Float.parseFloat(aniLines[i + 1].split(" ")[4]) * 1024,
+                                    Float.parseFloat(aniLines[i + 1].split(" ")[1]),
+                                    Float.parseFloat(aniLines[i + 1].split(" ")[2]))
                     )
             );
         }
@@ -89,9 +97,9 @@ public class FapAssets {
     }
 
     public static class AnimateAsset {
-        public static final String bird0_0 = "bird0_0";
-        public static final String bird1_0 = "bird1_0";
-        public static final String bird2_0 = "bird2_0";
+        public static final String yellow_bird = "bird0_0";
+        public static final String blue_bird = "bird1_0";
+        public static final String red_bird = "bird2_0";
         public static final String blink_0 = "blink_0";
     }
 
