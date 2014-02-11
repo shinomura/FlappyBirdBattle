@@ -6,6 +6,7 @@ import com.qthstudios.game.flappybirdbattle.config.Settings;
 import com.qthstudios.game.flappybirdbattle.framework.signature.Screen;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLGame;
 import com.qthstudios.game.flappybirdbattle.screencast.MainScreen;
+import com.qthstudios.game.flappybirdbattle.test.TestScreen;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -20,7 +21,7 @@ public class FlappyBird extends GLGame {
 
     @Override
     public Screen getStartScreen() {
-        return new MainScreen(this);
+        return new TestScreen(this);
     }
 
     @Override
@@ -29,8 +30,10 @@ public class FlappyBird extends GLGame {
         if(firstTimeCreate) {
             Settings.load(getFileIO());
             Assets.load(this);
+            FapAssets.load(this);
             firstTimeCreate = false;
         } else {
+            Assets.reload();
             FapAssets.reload();
         }
     }
