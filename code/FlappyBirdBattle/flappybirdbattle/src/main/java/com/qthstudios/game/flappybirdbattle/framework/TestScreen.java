@@ -17,7 +17,7 @@ class TestScreen extends Screen {
     Pixmap bobAlpha;
     Sound sound;
     Music music;
-        
+
     public TestScreen(Game game) {
         super(game);    
         bob = game.getGraphics().newPixmap("bobrgb888.png", Graphics.PixmapFormat.RGB565);
