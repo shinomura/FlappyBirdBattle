@@ -100,7 +100,10 @@ public class GameScreen extends GLScreen {
 	        break;
 	    }
 	}
-	
+
+    /** convert from ready state to playing state
+     *  just after user press more than one
+     */
 	private void updateReady() {
 	    if(game.getInput().getTouchEvents().size() > 0) {
 	        state = GAME_RUNNING;

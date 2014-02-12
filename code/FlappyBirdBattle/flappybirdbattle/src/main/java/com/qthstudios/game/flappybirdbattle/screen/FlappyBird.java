@@ -22,6 +22,7 @@ public class FlappyBird extends GLGame {
     @Override
     public Screen getStartScreen() {
         return new TestScreen(this);
+        //return new com.qthstudios.game.flappybirdbattle.screencast.GameScreen(this);
     }
 
     @Override

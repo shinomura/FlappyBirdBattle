@@ -12,11 +12,13 @@ import com.qthstudios.game.flappybirdbattle.framework.signature.Game;
 import com.qthstudios.game.flappybirdbattle.framework.signature.Input;
 import com.qthstudios.game.flappybirdbattle.model.Background;
 import com.qthstudios.game.flappybirdbattle.model.Bird;
+import com.qthstudios.game.flappybirdbattle.model.Pipe;
 
 import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import static com.qthstudios.game.flappybirdbattle.config.FapAssets.TextureAsset;
 import static com.qthstudios.game.flappybirdbattle.utils.LogUtils.LOGE;
 
 /**
@@ -34,6 +36,8 @@ public class TestScreen extends GLScreen {
     private Background background2;
 
     private Vector2 touchPoint;
+
+    Pipe pipe;
 
     Bird bird1;
     Bird bird2;
@@ -58,6 +62,8 @@ public class TestScreen extends GLScreen {
                 null,
                 0.2f);
         background2.velocity.x = -110;
+
+        pipe = new Pipe(10, 10, 50, 50);
 
 
         touchPoint = new Vector2();
@@ -117,15 +123,19 @@ public class TestScreen extends GLScreen {
         gl.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(FapAssets.atlas);
-        batcher.drawSprite(160, 240, 320, 480, FapAssets.textureRegions.get(FapAssets.TextureAsset.bg_day));
+        batcher.drawSprite(160, 240, 320, 480, FapAssets.textureRegions.get(TextureAsset.bg_day));
         if (background1.texture == null) {
-            background1.texture = FapAssets.textureRegions.get(FapAssets.TextureAsset.land);
+            background1.texture = FapAssets.textureRegions.get(TextureAsset.land);
         }
         background1.render(deltaTime);
         if (background2.texture == null) {
-            background2.texture = FapAssets.textureRegions.get(FapAssets.TextureAsset.land);
+            background2.texture = FapAssets.textureRegions.get(TextureAsset.land);
         }
         background2.render(deltaTime);
+
+        // batcher.drawSprite(168, 300, 100, 100, FapAssets.textureRegions.get(TextureAsset.pipe_up));
+
+        // batcher.drawSprite(30, 70, 100, 600, FapAssets.textureRegions.get(TextureAsset.pipe_up));
 
         batcher.endBatch();
 
