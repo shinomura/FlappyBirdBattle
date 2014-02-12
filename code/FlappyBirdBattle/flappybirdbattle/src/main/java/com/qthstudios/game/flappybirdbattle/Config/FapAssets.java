@@ -53,7 +53,7 @@ public class FapAssets {
         for (int i = 0; i < aniLines.length; i = i + 3) {
             // LOGE("TRUNGDQ", "ani: " + aniLines[i].split(" ")[0]);
             animations.put(aniLines[i].split(" ")[0],
-                    new Animation(0.2f,
+                    new Animation(0.12f,
                             new TextureRegion(atlas,
                                     Float.parseFloat(aniLines[i].split(" ")[3]) * 1024,
                                     Float.parseFloat(aniLines[i].split(" ")[4]) * 1024,

@@ -7,6 +7,7 @@ import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
+import com.qthstudios.game.flappybirdbattle.model.Background;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -22,10 +23,19 @@ public class TestScreen extends GLScreen {
     private TextureRegion _keyframe;
     private float _statetime = 0;
 
+    private Background background;
+
     public TestScreen(Game game) {
         super(game);
         guiCam = new Camera2D(glGraphics, 320, 480);
         batcher = new SpriteBatcher(glGraphics, 100);
+        background = new Background(
+                168, 56,
+                336, 112,
+                batcher,
+                null,
+                0.2f);
+        background.velocity.x = -110;
     }
 
     @Override
@@ -44,13 +54,7 @@ public class TestScreen extends GLScreen {
         _statetime += deltaTime;
 
         _keyframe = FapAssets.animations.get(FapAssets.AnimateAsset.yellow_bird).getKeyFrame(_statetime, Animation.ANIMATION_LOOPING);
-        batcher.drawSprite(120, 120, 48, 48, _keyframe);
-
-        _keyframe = FapAssets.animations.get(FapAssets.AnimateAsset.blue_bird).getKeyFrame(_statetime, Animation.ANIMATION_LOOPING);
-        batcher.drawSprite(220, 120, 64, 64, _keyframe);
-
-        _keyframe = FapAssets.animations.get(FapAssets.AnimateAsset.red_bird).getKeyFrame(_statetime, Animation.ANIMATION_LOOPING);
-        batcher.drawSprite(120, 320, 80, 80, _keyframe);
+        batcher.drawSprite(160, 240, 48, 48, _keyframe);
     }
 
     @Override
@@ -63,6 +67,10 @@ public class TestScreen extends GLScreen {
 
         batcher.beginBatch(FapAssets.atlas);
         batcher.drawSprite(160, 240, 320, 480, FapAssets.textureRegions.get(FapAssets.TextureAsset.bg_day));
+        if (background.texture == null) {
+            background.texture = FapAssets.textureRegions.get(FapAssets.TextureAsset.land);
+        }
+        background.render(deltaTime);
         batcher.endBatch();
 
         gl.glEnable(GL10.GL_BLEND);
