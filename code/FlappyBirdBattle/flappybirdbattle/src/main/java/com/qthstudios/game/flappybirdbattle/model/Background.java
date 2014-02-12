@@ -1,11 +1,9 @@
 package com.qthstudios.game.flappybirdbattle.model;
 
-import com.qthstudios.game.flappybirdbattle.framework.DynamicGameObject;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;
-import com.qthstudios.game.flappybirdbattle.framework.math.Rectangle;
+import com.qthstudios.game.flappybirdbattle.framework.signature.DynamicGameObject;
 
-import static com.qthstudios.game.flappybirdbattle.utils.LogUtils.LOGE;
 
 /**
  * Created by Dinh Quang Trung on 2/11/14.

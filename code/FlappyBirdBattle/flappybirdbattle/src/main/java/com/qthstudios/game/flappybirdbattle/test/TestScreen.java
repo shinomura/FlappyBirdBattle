@@ -1,12 +1,12 @@
 package com.qthstudios.game.flappybirdbattle.test;
 
 import com.qthstudios.game.flappybirdbattle.config.FapAssets;
-import com.qthstudios.game.flappybirdbattle.framework.Game;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Animation;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Game;
 import com.qthstudios.game.flappybirdbattle.model.Background;
 
 import javax.microedition.khronos.opengles.GL10;
