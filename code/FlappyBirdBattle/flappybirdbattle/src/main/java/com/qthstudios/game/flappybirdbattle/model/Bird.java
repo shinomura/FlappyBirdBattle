@@ -1,5 +1,10 @@
 package com.qthstudios.game.flappybirdbattle.model;
 
+import com.qthstudios.game.flappybirdbattle.config.FapAssets;
+import com.qthstudios.game.flappybirdbattle.framework.gl.Animation;
+import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
+import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;
+import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
 import com.qthstudios.game.flappybirdbattle.framework.signature.DynamicGameObject;
 import com.qthstudios.game.flappybirdbattle.model.custom_model.World;
 
@@ -8,52 +13,47 @@ import com.qthstudios.game.flappybirdbattle.model.custom_model.World;
  */
 public class Bird extends DynamicGameObject {
 
+    private float MAX_ANGLE_UP = 25;
+
     public Bird(float x, float y, float width, float height) {
         super(x, y, width, height);
     }
 
-    public static final int BOB_STATE_FLY = 0;
-    public static final int BOB_STATE_FALL = 1;
-    public static final int BOB_STATE_HIT = 2;
-    public static final float BOB_JUMP_VELOCITY = 11;
-    public static final float BOB_MOVE_VELOCITY = 20;
-    public static final float BIRD_WIDTH = 0.8f;
-    public static final float BIRD_HEIGHT = 0.8f;
+    public static final Vector2 gravity = new Vector2(0, -1000);
+    public static final float BIRD_WIDTH = 48;
+    public static final float BIRD_HEIGHT = 48;
 
-    int state;
+    public SpriteBatcher batcher;
+
+    String color; // Example: FapAssets.AnimateAsset.yellow_bird
     float stateTime;
 
-    public Bird(float x, float y) {
+    private TextureRegion _keyframe;
+
+    public Bird(SpriteBatcher b, String c, float x, float y) {
         super(x, y, BIRD_WIDTH, BIRD_HEIGHT);
-        state = BOB_STATE_FALL;
+        batcher = b;
+        color = c;
         stateTime = 0;
     }
 
     public void update(float deltaTime) {
-        velocity.add(World.gravity.x * deltaTime, World.gravity.y * deltaTime);
+        stateTime += deltaTime;
+
+        velocity.add(gravity.x * deltaTime, gravity.y * deltaTime);
         position.add(velocity.x * deltaTime, velocity.y * deltaTime);
         bounds.lowerLeft.set(position).sub(bounds.width / 2, bounds.height / 2);
 
-        if(velocity.y > 0 && state != BOB_STATE_HIT) {
-            if(state != BOB_STATE_FLY) {
-                state = BOB_STATE_FLY;
-                stateTime = 0;
-            }
+        float angle = velocity.y / 5;
+        if (angle > MAX_ANGLE_UP) {
+            angle = MAX_ANGLE_UP;
+        }
+        if (angle < -90) {
+            angle = -90;
         }
 
-        if(velocity.y < 0 && state != BOB_STATE_HIT) {
-            if(state != BOB_STATE_FALL) {
-                state = BOB_STATE_FALL;
-                stateTime = 0;
-            }
-        }
-
-        if(position.x < 0)
-            position.x = World.WORLD_WIDTH;
-        if(position.x > World.WORLD_WIDTH)
-            position.x = 0;
-
-        stateTime += deltaTime;
+        _keyframe = FapAssets.animations.get(color).getKeyFrame(stateTime, Animation.ANIMATION_LOOPING);
+        batcher.drawSprite(position.x, position.y, BIRD_WIDTH, BIRD_HEIGHT, angle, _keyframe);
     }
 
     public void hitPipe() {
@@ -66,22 +66,22 @@ public class Bird extends DynamicGameObject {
     public void hitBot() {
         throw new UnsupportedOperationException();
     }
-
-    public void hitSquirrel() {
-        velocity.set(0,0);
-        state = BOB_STATE_HIT;
-        stateTime = 0;
-    }
-
-    public void hitPlatform() {
-        velocity.y = BOB_JUMP_VELOCITY;
-        state = BOB_STATE_FLY;
-        stateTime = 0;
-    }
-
-    public void hitSpring() {
-        velocity.y = BOB_JUMP_VELOCITY * 1.5f;
-        state = BOB_STATE_FLY;
-        stateTime = 0;
-    }
+//
+//    public void hitSquirrel() {
+//        velocity.set(0,0);
+//        state = BOB_STATE_HIT;
+//        stateTime = 0;
+//    }
+//
+//    public void hitPlatform() {
+//        velocity.y = BOB_JUMP_VELOCITY;
+//        state = BOB_STATE_FLY;
+//        stateTime = 0;
+//    }
+//
+//    public void hitSpring() {
+//        velocity.y = BOB_JUMP_VELOCITY * 1.5f;
+//        state = BOB_STATE_FLY;
+//        stateTime = 0;
+//    }
 }

@@ -1,13 +1,19 @@
 package com.qthstudios.game.flappybirdbattle.test;
 
 import com.qthstudios.game.flappybirdbattle.config.FapAssets;
-import com.qthstudios.game.flappybirdbattle.framework.gl.Animation;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
+import com.qthstudios.game.flappybirdbattle.framework.math.OverlapTester;
+import com.qthstudios.game.flappybirdbattle.framework.math.Rectangle;
+import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
 import com.qthstudios.game.flappybirdbattle.framework.signature.Game;
+import com.qthstudios.game.flappybirdbattle.framework.signature.Input;
 import com.qthstudios.game.flappybirdbattle.model.Background;
+import com.qthstudios.game.flappybirdbattle.model.Bird;
+
+import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -20,41 +26,86 @@ public class TestScreen extends GLScreen {
     Camera2D guiCam;
     private SpriteBatcher batcher;
 
-    private TextureRegion _keyframe;
-    private float _statetime = 0;
 
-    private Background background;
+    Rectangle player1Area;
+    Rectangle player2Area;
+
+    private Background background1;
+    private Background background2;
+
+    private Vector2 touchPoint;
+
+    Bird bird1;
+    Bird bird2;
 
     public TestScreen(Game game) {
         super(game);
         guiCam = new Camera2D(glGraphics, 320, 480);
         batcher = new SpriteBatcher(glGraphics, 100);
-        background = new Background(
-                168, 56,
+
+        background1 = new Background(
+                168, 0,
                 336, 112,
                 batcher,
                 null,
                 0.2f);
-        background.velocity.x = -110;
+        background1.velocity.x = -110;
+
+        background2 = new Background(
+                168, 480,
+                336, 112,
+                batcher,
+                null,
+                0.2f);
+        background2.velocity.x = -110;
+
+
+        touchPoint = new Vector2();
+
+        player1Area = new Rectangle(0, 0, 320, 240);
+        player2Area = new Rectangle(0, 240, 320, 240);
+
+        bird1 = new Bird(batcher, FapAssets.AnimateAsset.red_bird, 120, 170);
+        bird1.velocity.set(0, 800);
+        bird2 = new Bird(batcher, FapAssets.AnimateAsset.blue_bird, 120, 330 - Bird.BIRD_HEIGHT / 2);
+        bird2.velocity.set(0, 800);
     }
 
     @Override
     public void update(float deltaTime) {
-//        GL10 gl = glGraphics.getGL();
-//        gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-//        guiCam.setViewportAndMatrices();
-//        gl.glEnable(GL10.GL_TEXTURE_2D);
-//
-//        renderTestObject(deltaTime);
-//
-//        gl.glDisable(GL10.GL_BLEND);
+        updateFlying();
+    }
+
+    private void updateFlying() {
+        List<Input.TouchEvent> touchEvents = game.getInput().getTouchEvents();
+        int len = touchEvents.size();
+        for(int i = 0; i < len; i++) {
+            Input.TouchEvent event = touchEvents.get(i);
+            if(event.type != Input.TouchEvent.TOUCH_DOWN)
+                continue;
+
+            touchPoint.set(event.x, event.y);
+            guiCam.touchToWorld(touchPoint);
+
+            if(OverlapTester.pointInRectangle(player1Area, touchPoint)) {
+                LOGE("TRUNGDQ", "touched 1!");
+                bird1.velocity.y = 400;
+                return;
+            }
+
+            if(OverlapTester.pointInRectangle(player2Area, touchPoint)) {
+                LOGE("TRUNGDQ", "touched 2!");
+                bird2.velocity.y = 150;
+                return;
+            }
+
+            return;
+        }
     }
 
     private void renderTestObject(float deltaTime) {
-        _statetime += deltaTime;
-
-        _keyframe = FapAssets.animations.get(FapAssets.AnimateAsset.yellow_bird).getKeyFrame(_statetime, Animation.ANIMATION_LOOPING);
-        batcher.drawSprite(160, 240, 48, 48, _keyframe);
+        bird1.update(deltaTime);
+        bird2.update(deltaTime);
     }
 
     @Override
@@ -67,10 +118,15 @@ public class TestScreen extends GLScreen {
 
         batcher.beginBatch(FapAssets.atlas);
         batcher.drawSprite(160, 240, 320, 480, FapAssets.textureRegions.get(FapAssets.TextureAsset.bg_day));
-        if (background.texture == null) {
-            background.texture = FapAssets.textureRegions.get(FapAssets.TextureAsset.land);
+        if (background1.texture == null) {
+            background1.texture = FapAssets.textureRegions.get(FapAssets.TextureAsset.land);
         }
-        background.render(deltaTime);
+        background1.render(deltaTime);
+        if (background2.texture == null) {
+            background2.texture = FapAssets.textureRegions.get(FapAssets.TextureAsset.land);
+        }
+        background2.render(deltaTime);
+
         batcher.endBatch();
 
         gl.glEnable(GL10.GL_BLEND);
