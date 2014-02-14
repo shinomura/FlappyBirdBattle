@@ -30,6 +30,9 @@ public class Background extends DynamicGameObject {
         if (position.x < - bounds.width / 2) {
             position.x = bounds.width / 2;
         }
+
+        bounds.lowerLeft.set(position).sub(bounds.width / 2, bounds.height / 2);
+
         batcher.drawSprite(position.x, position.y, bounds.width, bounds.height, texture);
         batcher.drawSprite(position.x + bounds.width - 1, position.y, bounds.width, bounds.height, texture);
     }

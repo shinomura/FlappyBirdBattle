@@ -1,12 +1,12 @@
 package com.qthstudios.game.flappybirdbattle.model;
 
 import com.qthstudios.game.flappybirdbattle.config.FapAssets;
+import com.qthstudios.game.flappybirdbattle.config.FapSettings;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Animation;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
 import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;
 import com.qthstudios.game.flappybirdbattle.framework.math.Vector2;
 import com.qthstudios.game.flappybirdbattle.framework.signature.DynamicGameObject;
-import com.qthstudios.game.flappybirdbattle.model.custom_model.World;
 
 /**
  * Created by ThaoHQSE60963 on 2/11/14.

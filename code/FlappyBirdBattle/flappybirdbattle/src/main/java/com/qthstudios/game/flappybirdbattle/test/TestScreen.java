@@ -1,9 +1,9 @@
 package com.qthstudios.game.flappybirdbattle.test;
 
 import com.qthstudios.game.flappybirdbattle.config.FapAssets;
+import com.qthstudios.game.flappybirdbattle.config.FapSettings;
 import com.qthstudios.game.flappybirdbattle.framework.gl.Camera2D;
 import com.qthstudios.game.flappybirdbattle.framework.gl.SpriteBatcher;
-import com.qthstudios.game.flappybirdbattle.framework.gl.TextureRegion;
 import com.qthstudios.game.flappybirdbattle.framework.impl.GLScreen;
 import com.qthstudios.game.flappybirdbattle.framework.math.OverlapTester;
 import com.qthstudios.game.flappybirdbattle.framework.math.Rectangle;
@@ -12,8 +12,9 @@ import com.qthstudios.game.flappybirdbattle.framework.signature.Game;
 import com.qthstudios.game.flappybirdbattle.framework.signature.Input;
 import com.qthstudios.game.flappybirdbattle.model.Background;
 import com.qthstudios.game.flappybirdbattle.model.Bird;
-import com.qthstudios.game.flappybirdbattle.model.Pipe;
+import com.qthstudios.game.flappybirdbattle.model.PipePair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -25,6 +26,11 @@ import static com.qthstudios.game.flappybirdbattle.utils.LogUtils.LOGE;
  * Created by Dinh Quang Trung on 2/11/14.
  */
 public class TestScreen extends GLScreen {
+    private final float defaultSpeed = FapSettings.WORLD_SPEED;
+    private final float pipeStartPosition = 500;
+    private final float pipeWidthSpace = 210;
+    private final float pipeDefaultWidth = 60;
+    private final float pipeDefaultHeight = 300;
     Camera2D guiCam;
     private SpriteBatcher batcher;
 
@@ -37,7 +43,7 @@ public class TestScreen extends GLScreen {
 
     private Vector2 touchPoint;
 
-    Pipe pipe;
+    List<PipePair> pipes = new ArrayList<PipePair>();
 
     Bird bird1;
     Bird bird2;
@@ -53,7 +59,7 @@ public class TestScreen extends GLScreen {
                 batcher,
                 null,
                 0.2f);
-        background1.velocity.x = -110;
+        background1.velocity.x = defaultSpeed;
 
         background2 = new Background(
                 168, 480,
@@ -61,10 +67,12 @@ public class TestScreen extends GLScreen {
                 batcher,
                 null,
                 0.2f);
-        background2.velocity.x = -110;
+        background2.velocity.x = defaultSpeed;
 
-        pipe = new Pipe(10, 10, 50, 50);
-
+        pipes.add(new PipePair(batcher, pipeStartPosition, 0, pipeDefaultWidth, pipeDefaultHeight));
+        pipes.add(new PipePair(batcher, pipeStartPosition + pipeWidthSpace, 0, pipeDefaultWidth, pipeDefaultHeight));
+        pipes.get(0).velocity.x = defaultSpeed;
+        pipes.get(1).velocity.x = defaultSpeed;
 
         touchPoint = new Vector2();
 
@@ -123,7 +131,11 @@ public class TestScreen extends GLScreen {
         gl.glEnable(GL10.GL_TEXTURE_2D);
 
         batcher.beginBatch(FapAssets.atlas);
+
         batcher.drawSprite(160, 240, 320, 480, FapAssets.textureRegions.get(TextureAsset.bg_day));
+
+        renderPipes(deltaTime);
+
         if (background1.texture == null) {
             background1.texture = FapAssets.textureRegions.get(TextureAsset.land);
         }
@@ -132,10 +144,6 @@ public class TestScreen extends GLScreen {
             background2.texture = FapAssets.textureRegions.get(TextureAsset.land);
         }
         background2.render(deltaTime);
-
-        // batcher.drawSprite(168, 300, 100, 100, FapAssets.textureRegions.get(TextureAsset.pipe_up));
-
-        // batcher.drawSprite(30, 70, 100, 600, FapAssets.textureRegions.get(TextureAsset.pipe_up));
 
         batcher.endBatch();
 
@@ -149,6 +157,13 @@ public class TestScreen extends GLScreen {
         gl.glDisable(GL10.GL_BLEND);
     }
 
+    private void renderPipes(float deltaTime) {
+        for (PipePair pipe : pipes) {
+            pipe.render(deltaTime);
+        }
+    }
+
+
     @Override
     public void pause() {
 
@@ -161,6 +176,34 @@ public class TestScreen extends GLScreen {
 
     @Override
     public void dispose() {
+
+    }
+
+    private void checkCollisions() {
+        checkTopCollisions();
+        checkBottomCollisions();
+        checkPipeCollisions();
+    }
+
+    private void checkPipeCollisions() {
+
+    }
+
+    private void checkBottomCollisions() {
+//        if (OverlapTester.overlapRectangles(background1.bounds, bird1.bounds)) {
+//            if (!bird1.isDead) {
+//                bird1.hitBot();
+//            }
+//        }
+//        if (OverlapTester.overlapRectangles(background1.bounds, bird2.bounds)) {
+//            if (!bird1.isDead) {
+//                bird2.hitBot();
+//            }
+//        }
+
+    }
+
+    private void checkTopCollisions() {
 
     }
 }
